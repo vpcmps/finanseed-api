@@ -12,13 +12,21 @@ export class Wallet {
       creditCards: props.creditCards || [],
     };
   }
-  addPaymentMethod(account: BankAccount) {
+
+  get accounts() {
+    return [...this.props.accounts];
+  }
+
+  get creditCards() {
+    return [...this.props.creditCards];
+  }
+  addBankAccount(account: BankAccount) {
     if (!account) throw new Error('Account invalid');
     this.props.accounts.push(account);
   }
   addCreditCard(card: CreditCard) {
     if (!card) throw new Error('Card invalid');
-    this.props.accounts.push(card);
+    this.props.creditCards.push(card);
   }
 }
 
