@@ -1,11 +1,13 @@
-import { UserRepositoryInterface } from '../../domain/repositories/user-repository.interface';
+import { UserRepositoryInterface } from '../../../domain/repositories/user-repository.interface';
 import { CreateUserUseCase } from './create-user.usecase';
 
 const userRepo: jest.Mocked<UserRepositoryInterface> = {
   insert: jest.fn(),
+  find: jest.fn(),
+  update: jest.fn(),
 };
 
-describe('CreateUseruseCase test', () => {
+describe('CreateUserUseCase test', () => {
   it('should call userRepository.insert one time', async () => {
     const createUserUseCase = new CreateUserUseCase(userRepo);
     await createUserUseCase.execute({

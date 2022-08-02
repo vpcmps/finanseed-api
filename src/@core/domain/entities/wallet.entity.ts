@@ -20,6 +20,9 @@ export class Wallet {
   get creditCards() {
     return [...this.props.creditCards];
   }
+  get name() {
+    return this.props.name;
+  }
   addBankAccount(account: BankAccount) {
     if (!account) throw new Error('Account invalid');
     this.props.accounts.push(account);

@@ -1,5 +1,5 @@
-import { User } from '../../domain/entities/user.entity';
-import { UserRepositoryInterface } from '../../domain/repositories/user-repository.interface';
+import { User } from '../../../domain/entities/user.entity';
+import { UserRepositoryInterface } from '../../../domain/repositories/user-repository.interface';
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepositoryInterface) {}
   async execute(input: CreateUserInput) {

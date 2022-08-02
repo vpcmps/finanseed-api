@@ -3,13 +3,26 @@ import { Direction } from '../enums/direction.enum';
 
 export class Transaction {
   id: string;
-  constructor(public props: TransactionProps, id?: string) {
+  created_at: Date;
+  constructor(public props: TransactionProps, id?: string, created_at?: Date) {
     this.id = id || crypto.randomUUID();
-    this.props = { ...props, tags: props.tags || [] };
+    this.created_at = created_at || new Date();
+    this.props = {
+      ...props,
+      tags: props.tags || [],
+    };
   }
 
   get value() {
     return this.props.value;
+  }
+
+  get direction() {
+    return this.props.direction;
+  }
+
+  get tags() {
+    return this.props.tags;
   }
 }
 

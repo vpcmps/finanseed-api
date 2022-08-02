@@ -12,6 +12,10 @@ export class CreditCard implements PaymentMethod {
   get transactions() {
     return this.props.transactions;
   }
+
+  get name() {
+    return this.props.name;
+  }
   addTransaction(transaction: Transaction) {
     if (!transaction || transaction.value <= 0)
       throw new Error('Empty transaction error');
