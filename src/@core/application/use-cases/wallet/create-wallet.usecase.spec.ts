@@ -6,10 +6,11 @@ const userRepo: jest.Mocked<UserRepositoryInterface> = {
   insert: jest.fn(),
   find: jest.fn().mockImplementation((userId) => {
     if (userId == 'd941747c-11a3-11ed-861d-0242ac120002')
-      return new User({ email: 'test@email.com', fullName: 'John Doe' });
+      return User.create({ email: 'test@email.com', fullName: 'John Doe' });
     return;
   }),
   update: jest.fn(),
+  findAll: jest.fn(),
 };
 
 describe('CreateWalletUseCase Test', () => {

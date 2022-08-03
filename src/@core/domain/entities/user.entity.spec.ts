@@ -3,7 +3,7 @@ import { Wallet } from './wallet.entity';
 
 describe('User Test', () => {
   it('should create the user', () => {
-    const user = new User({
+    const user = User.create({
       fullName: 'Vinícius P Campos',
       email: 'v.campos@test.com',
     });
@@ -11,11 +11,11 @@ describe('User Test', () => {
     expect(user.email).toBe('v.campos@test.com');
   });
   it('should add a new wallet', () => {
-    const user = new User({
+    const user = User.create({
       fullName: 'Vinícius P Campos',
       email: 'v.campos@test.com',
     });
-    const wallet = new Wallet({
+    const wallet = Wallet.new({
       name: 'Wallet 1',
     });
     user.addWallet(wallet);
@@ -24,7 +24,7 @@ describe('User Test', () => {
   });
   it('should throw a error when add a undefined wallet', () => {
     function addInvalidWallet() {
-      const user = new User({
+      const user = User.create({
         fullName: 'Vinícius P Campos',
         email: 'v.campos@test.com',
       });

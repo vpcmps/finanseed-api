@@ -4,7 +4,7 @@ import { CreditCard } from './credit-card.entity';
 
 describe('Wallet Test', () => {
   it('should create wallet', () => {
-    const wallet = new Wallet({
+    const wallet = Wallet.new({
       name: 'carteira 1',
     });
 
@@ -12,10 +12,10 @@ describe('Wallet Test', () => {
   });
 
   it('should add bank account in the wallet', () => {
-    const wallet = new Wallet({
+    const wallet = Wallet.new({
       name: 'carteira 1',
     });
-    const bankAccount = new BankAccount({
+    const bankAccount = BankAccount.new({
       name: 'Nubank',
     });
     wallet.addBankAccount(bankAccount);
@@ -24,10 +24,10 @@ describe('Wallet Test', () => {
   });
 
   it('should add credit card in the wallet', () => {
-    const wallet = new Wallet({
+    const wallet = Wallet.new({
       name: 'carteira 1',
     });
-    const creditCard = new CreditCard({
+    const creditCard = CreditCard.new({
       name: 'Nubank',
     });
     wallet.addCreditCard(creditCard);
@@ -37,7 +37,7 @@ describe('Wallet Test', () => {
 
   it('given a undefined bank account, when added to the wallet, should throw error', () => {
     function addInvalidBankAccount() {
-      const wallet = new Wallet({
+      const wallet = Wallet.new({
         name: 'carteira 1',
       });
 
@@ -49,7 +49,7 @@ describe('Wallet Test', () => {
 
   it('given a undefined credit card, when added to the wallet, should add credit card in the wallet', () => {
     function addInvalidCreditCard() {
-      const wallet = new Wallet({
+      const wallet = Wallet.new({
         name: 'carteira 1',
       });
       wallet.addCreditCard(undefined);

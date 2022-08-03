@@ -4,9 +4,23 @@ import { Direction } from '../enums/direction.enum';
 export class Transaction {
   id: string;
   created_at: Date;
-  constructor(public props: TransactionProps, id?: string, created_at?: Date) {
+
+  static new(props: TransactionProps, id?: string, created_at?: Date) {
+    return new Transaction(props, id, created_at);
+  }
+
+  private constructor(
+    public props: TransactionProps,
+    id?: string,
+    created_at?: Date,
+  ) {
     this.id = id || crypto.randomUUID();
     this.created_at = created_at || new Date();
+    if (!props) {
+      //@ts-expect-error used for ORM
+      this.props = {};
+      return;
+    }
     this.props = {
       ...props,
       tags: props.tags || [],

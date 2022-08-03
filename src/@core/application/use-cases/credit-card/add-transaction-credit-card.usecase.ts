@@ -12,7 +12,7 @@ export class AddTransactionCreditCardUseCase
 
     if (!creditCard) throw new Error('Invalid CreditCard');
 
-    const transaction = new Transaction(input);
+    const transaction = Transaction.new(input);
     creditCard.addTransaction(transaction);
     this.creditCardRepository.update(input.creditCardId, creditCard);
   }

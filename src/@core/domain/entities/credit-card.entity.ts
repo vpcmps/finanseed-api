@@ -4,9 +4,18 @@ import { PaymentMethod } from './payment-method.interface';
 
 export class CreditCard implements PaymentMethod {
   id: string;
-  constructor(public props: CreditCardProps, id?: string) {
-    id: id || crypto.randomUUID;
 
+  static new(props: CreditCardProps, id?: string) {
+    return new CreditCard(props, id);
+  }
+
+  private constructor(public props: CreditCardProps, id?: string) {
+    this.id = id || crypto.randomUUID();
+    if (!props) {
+      //@ts-expect-error used for ORM
+      this.props = {};
+      return;
+    }
     this.props = { ...props, transactions: props.transactions || [] };
   }
   get transactions() {

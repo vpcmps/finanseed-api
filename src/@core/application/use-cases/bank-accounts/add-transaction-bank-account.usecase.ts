@@ -11,7 +11,7 @@ export class AddTransactionBankAccountUseCase
     const bankAccount = await this.bankAccountRepository.find(input.accountId);
     if (!bankAccount) throw new Error('Invalid Bank Account');
 
-    const transaction = new Transaction(input);
+    const transaction = Transaction.new(input);
     bankAccount.addTransaction(transaction);
     this.bankAccountRepository.update(input.accountId, bankAccount);
   }

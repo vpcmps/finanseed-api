@@ -9,7 +9,7 @@ export class CreateCreditCardUseCase
     const wallet = await this.walletRepository.find(input.walletId);
     if (!wallet) throw new Error('Invalid Wallet');
 
-    const creditCard = new CreditCard(input);
+    const creditCard = CreditCard.new(input);
     wallet.addCreditCard(creditCard);
     await this.walletRepository.update(input.walletId, wallet);
   }

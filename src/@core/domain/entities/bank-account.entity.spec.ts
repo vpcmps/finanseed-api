@@ -3,12 +3,12 @@ import { BankAccount } from './bank-account.entity';
 import { Transaction } from './transaction.entity';
 describe('BankAccount Test', () => {
   it('should create the BankAccount', () => {
-    const bankAccount = new BankAccount({ name: 'Nubank' });
+    const bankAccount = BankAccount.new({ name: 'Nubank' });
     expect(bankAccount).toBeDefined();
   });
   it('should add transaction', () => {
-    const bankAccount = new BankAccount({ name: 'Nubank' });
-    const transaction = new Transaction({
+    const bankAccount = BankAccount.new({ name: 'Nubank' });
+    const transaction = Transaction.new({
       name: 'cheesecake factory',
       direction: Direction.In,
       value: 15,
@@ -19,8 +19,8 @@ describe('BankAccount Test', () => {
   });
   it('shouldn`t accept transaction', () => {
     function addInvalidTransaction() {
-      const bankAccount = new BankAccount({ name: 'Nubank' });
-      const transaction = new Transaction({
+      const bankAccount = BankAccount.new({ name: 'Nubank' });
+      const transaction = Transaction.new({
         name: 'cheesecake factory',
         direction: Direction.In,
         value: 0,

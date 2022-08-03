@@ -6,7 +6,7 @@ import { CreditCard } from '../../../domain/entities/credit-card.entity';
 const CreditCardRepository: jest.Mocked<CreditCardRepositoryInterface> = {
   find: jest.fn().mockImplementation((accountId) => {
     if (accountId === '0bbfcc97-35f0-4363-925a-336df2a4608f')
-      return new CreditCard({
+      return CreditCard.new({
         name: 'Nubank',
       });
     return;

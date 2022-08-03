@@ -1,6 +1,5 @@
 import { EntitySchema } from 'typeorm';
 import { User } from '../../../domain/entities/user.entity';
-import { Wallet } from '../../../domain/entities/wallet.entity';
 
 export const UserSchema = new EntitySchema<User>({
   name: 'user',
@@ -20,7 +19,8 @@ export const UserSchema = new EntitySchema<User>({
   relations: {
     wallets: {
       type: 'one-to-many',
-      target: Wallet,
+      target: 'Wallet',
+      inverseSide: 'user',
     },
   },
 });

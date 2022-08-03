@@ -3,7 +3,7 @@ import { UserRepositoryInterface } from '../../../domain/repositories/user-repos
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepositoryInterface) {}
   async execute(input: CreateUserInput) {
-    const user = new User(input);
+    const user = User.create(input);
     await this.userRepository.insert(user);
   }
 }

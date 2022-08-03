@@ -6,7 +6,7 @@ const walletRepository: jest.Mocked<WalletRepositoryInterface> = {
   update: jest.fn(),
   find: jest.fn().mockImplementation((walletId) => {
     if (walletId == 'd941747c-11a3-11ed-861d-0242ac120002')
-      return new Wallet(
+      return Wallet.new(
         { name: 'Wallet 1' },
         'd941747c-11a3-11ed-861d-0242ac120002',
       );

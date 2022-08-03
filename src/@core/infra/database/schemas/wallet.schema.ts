@@ -23,5 +23,6 @@ export const WalletSchema = new EntitySchema<Wallet>({
       type: 'one-to-many',
       target: CreditCard,
     },
+    user,
   },
 });

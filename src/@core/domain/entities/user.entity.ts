@@ -3,8 +3,18 @@ import crypto from 'crypto';
 
 export class User {
   id: string;
-  constructor(public props: UserProps, id?: string) {
+
+  static create(props: UserProps, id?: string) {
+    return new User(props, id);
+  }
+
+  private constructor(public props: UserProps, id?: string) {
     this.id = id || crypto.randomUUID();
+    if (!props) {
+      //@ts-expect-error used for ORM
+      this.props = {};
+      return;
+    }
     this.props = {
       ...props,
       wallets: props.wallets || [],

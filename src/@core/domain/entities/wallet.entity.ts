@@ -4,8 +4,18 @@ import crypto from 'crypto';
 
 export class Wallet {
   id: string;
-  constructor(public props: WalletProps, id?: string) {
+
+  static new(props: WalletProps, id?: string) {
+    return new Wallet(props, id);
+  }
+
+  private constructor(public props: WalletProps, id?: string) {
     this.id = id || crypto.randomUUID();
+    if (!props) {
+      //@ts-expect-error used for ORM
+      this.props = {};
+      return;
+    }
     this.props = {
       ...props,
       accounts: props.accounts || [],

@@ -3,8 +3,20 @@ import crypto from 'crypto';
 
 export class BankAccount {
   id: string;
-  constructor(public props: BankAccountProps, id?: string) {
+
+  static new(props: BankAccountProps, id?: string) {
+    return new BankAccount(props, id);
+  }
+
+  private constructor(public props: BankAccountProps, id?: string) {
     this.id = id || crypto.randomUUID();
+
+    if (!props) {
+      //@ts-expect-error used for ORM
+      this.props = {};
+      return;
+    }
+
     this.props = { ...props, transactions: props.transactions || [] };
   }
 

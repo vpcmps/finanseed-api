@@ -6,7 +6,7 @@ import { BankAccount } from '../../../domain/entities/bank-account.entity';
 const bankAccountRepository: jest.Mocked<BankAccountRepositoryInterface> = {
   find: jest.fn().mockImplementation((accountId) => {
     if (accountId === '0bbfcc97-35f0-4363-925a-336df2a4608f')
-      return new BankAccount({
+      return BankAccount.new({
         name: 'Nubank',
       });
     return;

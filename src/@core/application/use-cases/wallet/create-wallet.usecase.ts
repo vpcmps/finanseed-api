@@ -11,7 +11,7 @@ export class CreateWalletUseCase
 
     if (!user) throw new Error('Invalid user');
 
-    const wallet = new Wallet(input);
+    const wallet = Wallet.new(input);
 
     user.addWallet(wallet);
     await this.userRepository.update(input.userId, user);

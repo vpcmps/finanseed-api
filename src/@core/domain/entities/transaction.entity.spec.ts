@@ -3,7 +3,7 @@ import { Transaction } from './transaction.entity';
 
 describe('Transaction test', () => {
   it('should create the transaction', () => {
-    const transaction = new Transaction({
+    const transaction = Transaction.new({
       name: 'transaction',
       direction: Direction.In,
       value: 15,

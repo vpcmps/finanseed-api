@@ -4,12 +4,12 @@ import { Transaction } from './transaction.entity';
 
 describe('CreditCard Test', () => {
   it('should create the BankAccount', () => {
-    const bankAccount = new CreditCard({ name: 'Nubank' });
+    const bankAccount = CreditCard.new({ name: 'Nubank' });
     expect(bankAccount).toBeDefined();
   });
   it('should add transaction', () => {
-    const bankAccount = new CreditCard({ name: 'Nubank' });
-    const transaction = new Transaction({
+    const bankAccount = CreditCard.new({ name: 'Nubank' });
+    const transaction = Transaction.new({
       name: 'cheesecake factory',
       direction: Direction.In,
       value: 15,
@@ -20,8 +20,8 @@ describe('CreditCard Test', () => {
   });
   it('shouldn`t accept transaction', () => {
     function addInvalidTransaction() {
-      const bankAccount = new CreditCard({ name: 'Nubank' });
-      const transaction = new Transaction({
+      const bankAccount = CreditCard.new({ name: 'Nubank' });
+      const transaction = Transaction.new({
         name: 'cheesecake factory',
         direction: Direction.In,
         value: 0,

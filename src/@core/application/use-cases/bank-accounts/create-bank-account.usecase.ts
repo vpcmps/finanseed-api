@@ -8,7 +8,7 @@ export class CreateBankAccountUseCase
   async execute(input: CreateBankAccountInput) {
     const wallet = await this.walletRepository.find(input.walletId);
     if (!wallet) throw new Error('Invalid wallet Id');
-    const bankAccount = new BankAccount(input);
+    const bankAccount = BankAccount.new(input);
     wallet.addBankAccount(bankAccount);
     await this.walletRepository.update(input.walletId, wallet);
   }

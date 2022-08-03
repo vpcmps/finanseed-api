@@ -5,6 +5,7 @@ const userRepo: jest.Mocked<UserRepositoryInterface> = {
   insert: jest.fn(),
   find: jest.fn(),
   update: jest.fn(),
+  findAll: jest.fn(),
 };
 
 describe('CreateUserUseCase test', () => {
