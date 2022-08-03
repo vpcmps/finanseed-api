@@ -25,17 +25,29 @@ export class User {
     return this.props.fullName;
   }
 
+  private set fullName(value: string) {
+    this.props.fullName = value;
+  }
+
   public get email(): string {
     return this.props.email;
   }
-
+  private set email(value: string) {
+    this.props.email = value;
+  }
   public get wallets(): Wallet[] {
-    return [...this.props.wallets];
+    return this.props.wallets as Wallet[];
+  }
+  private set wallets(value: Wallet[]) {
+    this.props.wallets = value;
   }
 
   addWallet(wallet: Wallet) {
     if (!wallet) throw new Error('Invalid wallet');
     this.props.wallets.push(wallet);
+  }
+  toJSON() {
+    return { ...this.props, id: this.id };
   }
 }
 

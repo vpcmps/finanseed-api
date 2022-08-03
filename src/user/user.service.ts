@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserUseCase } from '../@core/application/use-cases/user/create-user.usecase';
-import { ListAllUserUseCase } from '../@core/application/use-cases/user/list-all-use.usecase';
+import { CreateUserUseCase } from '@/@core/application/use-cases/user/create-user.usecase';
+import { ListAllUserUseCase } from '@/@core/application/use-cases/user/list-all-use.usecase';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 

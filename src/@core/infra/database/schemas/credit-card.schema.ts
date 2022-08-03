@@ -16,7 +16,7 @@ export const CreditCardSchema = new EntitySchema<CreditCard>({
   relations: {
     transactions: {
       type: 'one-to-many',
-      target: Transaction,
+      target: 'Transaction',
     },
   },
 });

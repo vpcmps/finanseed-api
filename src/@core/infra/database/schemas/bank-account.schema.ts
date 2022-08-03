@@ -17,7 +17,7 @@ export const BankAccountSchema = new EntitySchema<BankAccount>({
   relations: {
     transactions: {
       type: 'one-to-many',
-      target: Transaction,
+      target: 'Transaction',
     },
   },
 });

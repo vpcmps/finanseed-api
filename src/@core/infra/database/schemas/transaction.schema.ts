@@ -11,7 +11,7 @@ export const TransactionSchema = new EntitySchema<Transaction>({
       primary: true,
     },
     value: {
-      type: 'double',
+      type: 'money',
     },
     direction: {
       type: 'enum',

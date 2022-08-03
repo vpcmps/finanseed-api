@@ -1,0 +1,11 @@
+GET http://localhost:3000/user
+###
+
+POST http://localhost:3000/wallet
+Content-Type: application/json
+
+{
+    "userId": "92ebb498-e605-4fde-9f99-5697b2c45d49",
+    "name": "Wallet 1"
+}
+###

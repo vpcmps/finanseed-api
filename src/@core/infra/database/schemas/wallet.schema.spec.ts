@@ -7,7 +7,7 @@ import { CreditCardSchema } from './credit-card.schema';
 import { TransactionSchema } from './transaction.schema';
 
 describe('User Schema Tests', () => {
-  test('create', async () => {
+  test('create new user', async () => {
     const dataSource = new DataSource({
       type: 'postgres',
       host: 'localhost',
@@ -29,8 +29,11 @@ describe('User Schema Tests', () => {
       fullName: 'Vinícius Campos',
       email: 'test@finansees.com',
     });
-    const UserRepo = dataSource.getRepository(User);
-    await UserRepo.save(user);
-    console.log(await UserRepo.findOneBy({ id: user.id }));
+    const userRepo = dataSource.getRepository(User);
+    await userRepo.save(user);
+    const storedUser = await userRepo.findOneBy({ id: user.id });
+    console.log(storedUser);
+    expect(storedUser).toBeDefined();
+    await userRepo.delete({ id: storedUser.id });
   });
 });

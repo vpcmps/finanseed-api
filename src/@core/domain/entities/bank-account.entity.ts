@@ -21,7 +21,7 @@ export class BankAccount {
   }
 
   get transactions() {
-    return [...this.props.transactions];
+    return this.props.transactions as Transaction[];
   }
 
   get name() {

@@ -19,7 +19,7 @@ export class CreditCard implements PaymentMethod {
     this.props = { ...props, transactions: props.transactions || [] };
   }
   get transactions() {
-    return this.props.transactions;
+    return this.props.transactions as Transaction[];
   }
 
   get name() {

@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWalletDto } from './dto/create-wallet.dto';
 import { UpdateWalletDto } from './dto/update-wallet.dto';
+import { CreateWalletUseCase } from '../@core/application/use-cases/wallet/create-wallet.usecase';
 
 @Injectable()
 export class WalletService {
+  constructor(private createUseCase: CreateWalletUseCase) {}
   create(createWalletDto: CreateWalletDto) {
-    return 'This action adds a new wallet';
+    this.createUseCase.execute(createWalletDto);
   }
 
   findAll() {

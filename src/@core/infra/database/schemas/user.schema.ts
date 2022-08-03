@@ -10,10 +10,10 @@ export const UserSchema = new EntitySchema<User>({
       primary: true,
     },
     fullName: {
-      type: 'string',
+      type: 'varchar',
     },
     email: {
-      type: 'string',
+      type: 'varchar',
     },
   },
   relations: {
