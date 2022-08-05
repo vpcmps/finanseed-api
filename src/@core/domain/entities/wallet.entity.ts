@@ -46,7 +46,7 @@ export class Wallet {
     this.props.name = value;
   }
 
-  get userId() {
+  get userId(): string {
     return this.props.userId;
   }
 

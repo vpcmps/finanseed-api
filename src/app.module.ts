@@ -7,11 +7,11 @@ import { BankAccountModule } from './bank-account/bank-account.module';
 import { CreditCardModule } from './credit-card/credit-card.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BankAccountSchema } from './@core/infra/database/schemas/bank-account.schema';
-import { CreditCardSchema } from './@core/infra/database/schemas/credit-card.schema';
-import { TransactionSchema } from './@core/infra/database/schemas/transaction.schema';
-import { UserSchema } from './@core/infra/database/schemas/user.schema';
-import { WalletSchema } from './@core/infra/database/schemas/wallet.schema';
+import { BankAccountSchema } from '@/infra/database/typeorm/schemas/bank-account.schema';
+import { CreditCardSchema } from '@/infra/database/typeorm/schemas/credit-card.schema';
+import { TransactionSchema } from '@/infra/database/typeorm/schemas/transaction.schema';
+import { UserSchema } from '@/infra/database/typeorm/schemas/user.schema';
+import { WalletSchema } from '@/infra/database/typeorm/schemas/wallet.schema';
 
 @Module({
   imports: [

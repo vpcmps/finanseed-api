@@ -1,5 +1,5 @@
 import { EntitySchema } from 'typeorm';
-import { Wallet } from '../../../domain/entities/wallet.entity';
+import { Wallet } from '@/@core/domain/entities/wallet.entity';
 
 export const WalletSchema = new EntitySchema<Wallet>({
   name: 'Wallet',
