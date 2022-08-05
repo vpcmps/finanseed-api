@@ -9,9 +9,13 @@ import { UserRepository } from '../@core/infra/database/repositories/user.reposi
 import { User } from '../@core/domain/entities/user.entity';
 import { UserRepositoryInterface } from '../@core/domain/repositories/user-repository.interface';
 import { ListWalletsUseCase } from '../@core/application/use-cases/wallet/list-wallets.usecase';
+import { UserSchema } from '../@core/infra/database/schemas/user.schema';
+import { WalletRepository } from '../@core/infra/database/repositories/wallet.repository';
+import { Wallet } from '../@core/domain/entities/wallet.entity';
+import { WalletRepositoryInterface } from '../@core/domain/repositories/wallet-repository.interface';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([WalletSchema])],
+  imports: [TypeOrmModule.forFeature([WalletSchema, UserSchema])],
   controllers: [WalletController],
   providers: [
     WalletService,
@@ -22,16 +26,24 @@ import { ListWalletsUseCase } from '../@core/application/use-cases/wallet/list-w
       inject: [getDataSourceToken()],
     },
     {
+      provide: WalletRepository,
+      useFactory: (dataSource: DataSource) =>
+        new WalletRepository(dataSource.getRepository(Wallet)),
+      inject: [getDataSourceToken()],
+    },
+    {
       provide: CreateWalletUseCase,
-      useFactory: (userRepository: UserRepositoryInterface) =>
-        new CreateWalletUseCase(userRepository),
-      inject: [UserRepository],
+      useFactory: (
+        userRepository: UserRepositoryInterface,
+        walletRepository: WalletRepositoryInterface,
+      ) => new CreateWalletUseCase(userRepository, walletRepository),
+      inject: [UserRepository, WalletRepository],
     },
     {
       provide: ListWalletsUseCase,
-      useFactory: (userRepository: UserRepositoryInterface) =>
-        new ListWalletsUseCase(userRepository),
-      inject: [UserRepository],
+      useFactory: (walletRepository: WalletRepositoryInterface) =>
+        new ListWalletsUseCase(walletRepository),
+      inject: [WalletRepository],
     },
   ],
 })

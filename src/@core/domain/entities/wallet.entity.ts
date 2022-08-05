@@ -27,12 +27,23 @@ export class Wallet {
   get accounts() {
     return this.props.accounts as BankAccount[];
   }
+  private set accounts(value: BankAccount[]) {
+    this.props.accounts = value;
+  }
 
   get creditCards() {
     return this.props.creditCards as CreditCard[];
   }
+  private set creditCards(value: CreditCard[]) {
+    this.props.creditCards = value;
+  }
+
   get name() {
     return this.props.name;
+  }
+
+  private set name(value: string) {
+    this.props.name = value;
   }
 
   get userId() {
@@ -44,11 +55,17 @@ export class Wallet {
   }
   addBankAccount(account: BankAccount) {
     if (!account) throw new Error('Account invalid');
-    this.props.accounts.push(account);
+    this.accounts.push(account);
   }
   addCreditCard(card: CreditCard) {
     if (!card) throw new Error('Card invalid');
-    this.props.creditCards.push(card);
+    this.creditCards.push(card);
+  }
+  toJSON(): any {
+    return {
+      ...this.props,
+      id: this.id,
+    };
   }
 }
 
